@@ -1,4 +1,8 @@
-const Card = ({ src, title,name,url }) => `
+
+
+
+const Card = ({ src,title ,name ,url }) => `
+
     <div class="col-4 mb-5">
         <a href="${url}" target="_blank">
             <dib class="card">
@@ -19,6 +23,7 @@ const Card = ({ src, title,name,url }) => `
 $('#button-addon2').on('click', () => {
 
     $('#results').empty();
+    
 
     const ward = $('#search-word').val();
     // alert(ward)
@@ -56,12 +61,16 @@ $('#button-addon2').on('click', () => {
             let src = response.results[i].artworkUrl100
             let name = response.results[i].artistName
             let url = response.results[i].collectionViewUrl
+            
+            // let newUrl =
+            let newUrl = src.replace(/100/g,'200');
+            console.log(newUrl);
 
-            $('#results').append(Card({  title: title, name: name, src: src, url: url,
-            }));
-
-
-            console.log(1)
+            
+            $('#results').append(
+                Card({  title: title, name: name, src: newUrl, url: url,})
+            );
+            
         }
        
 
